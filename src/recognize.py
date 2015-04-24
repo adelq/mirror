@@ -1,15 +1,17 @@
 import speech_recognition as sr
 import re
-from modules.weather import weather
+from subprocess import call
+from config import COMMANDS
 
 
-def callback(recognizer, audio):                          # this is called from the background thread
+def callback(recognizer, audio):
     print("trying to recognize")
     try:
-        text = recognizer.recognize(audio)  # received audio data, now need to recognize it
+        text = recognizer.recognize(audio)
         print(text)
-        if re.search("weather", text):
-            print(weather.get_weather())
+        for key in COMMANDS:
+            if re.search(COMMANDS[key], text):
+                COMMANDS[key]()
     except LookupError:
         print('error')
         pass
