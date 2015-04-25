@@ -8,4 +8,4 @@ def get_weather(loc="Philadelphia,PA"):
     w = obs.get_weather()
     temp = int(round(w.get_temperature("fahrenheit")["temp"]))
     cond = w.get_status()
-    print("The temperature is {} degrees and {}".format(temp, cond))
+    return "The temperature is {} degrees and {}".format(temp, cond)

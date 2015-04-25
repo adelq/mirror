@@ -2,7 +2,8 @@ todos = []
 
 def add_todo(item):
     todos.append(item)
+    return "{} has been added to your to-do list.".format(item)
 
 def list_todos():
-    print "Your todo list contains " + \
+    return "Your to-do list contains " + \
         ", ".join(todos[:-2] + [" and ".join(todos[-2:])])

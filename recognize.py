@@ -2,6 +2,7 @@ import speech_recognition as sr
 import re
 from subprocess import call
 from config import COMMANDS
+import speech
 
 
 def callback(recognizer, audio):
@@ -16,9 +17,15 @@ def callback(recognizer, audio):
                 print 'args', args
                 print 'found', key
                 if (len(args) > 0):
-                    COMMANDS[key](args[0])
+                    if COMMANDS[key][1]:
+                        speech.play_text(COMMANDS[key][0](args[0]))
+                    else:
+                        COMMANDS[key][0](args[0])
                 else:
-                    COMMANDS[key]()
+                    if COMMANDS[key][1]:
+                        speech.play_text(COMMANDS[key][0]())
+                    else:
+                        COMMANDS[key][0]()
     except LookupError:
         print('error')
         pass
