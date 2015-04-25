@@ -25,9 +25,5 @@ def callback(recognizer, audio):
 r = sr.Recognizer()
 r.listen_in_background(sr.Microphone(), callback)
 
-from modules.todo.todo import add_todo, list_todos
-add_todo('work')
-add_todo('eat')
-
 import time
 while True: time.sleep(0.1)
