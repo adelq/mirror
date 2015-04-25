@@ -9,7 +9,7 @@ def get_song_url(song_name):
     return song.stream.url
 
 def play_song_url(song_url):
-    subprocess.call(['cvlc', song_url])
+    subprocess.call(['cvlc', '--play-and-exit', song_url])
 
 def play_song(song_name):
     play_song_url(get_song_url(song_name))
