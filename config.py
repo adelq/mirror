@@ -4,5 +4,6 @@ from modules.music.gs import play_song
 
 COMMANDS = {
     "weather": get_weather,
-    "list to do": list_todos
+    "list my": list_todos,
+    "a\w (.*) to my list": add_todo
 }
