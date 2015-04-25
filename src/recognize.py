@@ -8,15 +8,19 @@ def callback(recognizer, audio):
     print("trying to recognize")
     try:
         text = recognizer.recognize(audio)
-        print(text)
         for key in COMMANDS:
-            if re.search(COMMANDS[key], text):
+            if re.search(key, text):
+                print 'found', key
                 COMMANDS[key]()
     except LookupError:
         print('error')
         pass
 r = sr.Recognizer()
 r.listen_in_background(sr.Microphone(), callback)
+
+from modules.todo.todo import add_todo, list_todos
+add_todo('work')
+add_todo('eat')
 
 import time
 while True: time.sleep(0.1)
