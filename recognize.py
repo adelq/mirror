@@ -1,7 +1,8 @@
 import speech_recognition as sr
 import re
 from subprocess import call
-from config import COMMANDS
+import pdb; pdb.set_trace()
+# from config import COMMANDS
 
 
 def callback(recognizer, audio):
