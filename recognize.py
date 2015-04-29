@@ -1,6 +1,5 @@
 import speech_recognition as sr
 import re
-from subprocess import call
 from config import COMMANDS
 import speech
 
@@ -26,8 +25,9 @@ def callback(recognizer, audio):
                         speech.play_text(COMMANDS[key][0]())
                     else:
                         COMMANDS[key][0]()
-    except LookupError:
-        print('error')
+    except LookupError as e:
+        speech.play_text("Could not recognize, please try again.")
+        print('error', e)
         pass
 r = sr.Recognizer()
 r.listen_in_background(sr.Microphone(), callback)
